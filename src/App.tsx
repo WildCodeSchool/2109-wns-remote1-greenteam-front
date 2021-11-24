@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { apiUrl } from './settings';
 import './App.css';
+import LandingPage from './Pages/LandingPage';
 
 function App(): JSX.Element {
   const [message, setMessage] = useState(null);
@@ -28,9 +29,7 @@ function App(): JSX.Element {
   });
   return (
     <div className="App">
-      <h1>React template</h1>
-      {message && <p>Message received from server: {message}</p>}
-      {error && <p>Error while fetching: {error?.message}</p>}
+      <LandingPage />
     </div>
   );
 }
