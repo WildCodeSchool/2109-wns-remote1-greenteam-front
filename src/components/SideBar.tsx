@@ -16,7 +16,11 @@ const navLinks = [
 export default function SideBar(): JSX.Element {
   return (
     <SideBarContainer>
-      side bar
+      {navLinks.map(({ pageTitle }) => (
+        <div>
+          <p>{pageTitle}</p>
+        </div>
+      ))}
     </SideBarContainer>
   )
 }
