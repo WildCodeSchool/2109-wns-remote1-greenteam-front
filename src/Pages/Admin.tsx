@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function Admin(): JSX.Element {
-  return (
-    <div>
-      Admin
-    </div>
-  )
+  return <div>Admin</div>;
 }

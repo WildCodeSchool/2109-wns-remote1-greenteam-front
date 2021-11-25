@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function ProfileSettings(): JSX.Element {
-  return (
-    <div>
-      Profile settings
-    </div>
-  )
+  return <div>Profile settings</div>;
 }
