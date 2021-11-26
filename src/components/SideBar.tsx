@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import LeftArrow from '../assets/icons/left-arrow.svg';
 import RightArrow from '../assets/icons/right-arrow.svg';
@@ -22,24 +22,21 @@ const navLinks = [
   { pageTitle: 'Admin', link: '/admin', icon: AdminLogo },
 ];
 
-export default function SideBar(): JSX.Element {
-  const [showSmallSideBar, setShowSmallSideBar] = useState(false);
-
-  const LeftArrowContainer = styled.div`
+const LeftArrowContainer = styled('div')<{showSmallSideBar: boolean}>`
     display: flex;
-    justify-content: ${showSmallSideBar ? 'center' : 'end'};
-    padding: ${showSmallSideBar ? '10px 0 0 0' : '10px 10px 0 0'};
+    justify-content: ${props => props.showSmallSideBar ? 'center' : 'end'};
+    padding: ${props => props.showSmallSideBar ? '10px 0 0 0' : '10px 10px 0 0'};
     cursor: pointer;
     margin-bottom: 24px;
   `;
 
-  const SideBarContainer = styled.div`
-    width: ${showSmallSideBar ? '50px' : '160px'};
+  const SideBarContainer = styled('div')<{showSmallSideBar: boolean}>`
+    width: ${props => props.showSmallSideBar ? '50px' : '160px'};
     background-color: #518f97;
     height: 100vh;
   `;
 
-  const PageTitle = styled.div`
+  const PageTitle = styled('div')<{active: boolean}>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,15 +45,23 @@ export default function SideBar(): JSX.Element {
     cursor: pointer;
     height: 33px;
     margin-bottom: 25px;
+    background-color: ${props => props.active ? 'white': null};
+    color: ${props => props.active ? '#518F97': null};
+    border-radius: ${props => props.active ? '10px 0 0 10px': null};
   `;
 
+export default function SideBar(): JSX.Element {
+  const [showSmallSideBar, setShowSmallSideBar] = useState(false);
+
+  const {pathname} = useLocation();
+  
   const toggleShowSmallSideBar = () => {
     setShowSmallSideBar(!showSmallSideBar);
   };
 
   return (
-    <SideBarContainer>
-      <LeftArrowContainer onClick={toggleShowSmallSideBar}>
+    <SideBarContainer showSmallSideBar={showSmallSideBar} >
+      <LeftArrowContainer showSmallSideBar={showSmallSideBar} onClick={toggleShowSmallSideBar}>
         <img src={showSmallSideBar ? RightArrow : LeftArrow} alt="left-arrow" />
       </LeftArrowContainer>
       <LogoContainer>
@@ -68,23 +73,11 @@ export default function SideBar(): JSX.Element {
 
       {navLinks.map(({ pageTitle, link, icon }) => (
         <div key={link}>
-          <Link to={link} style={{textDecoration: 'none'}}>
-          {window.location.pathname === link ? (
-            <PageTitle
-              style={{
-                backgroundColor: 'white',
-                color: '#518F97',
-                borderRadius: '10px 0 0 10px',
-              }}
-            >
-              {showSmallSideBar ? <img src={icon} alt="bar-icon" /> : pageTitle}
+          <NavLink to={link} style={{textDecoration: 'none'}}>
+            <PageTitle active={link === pathname}>
+              {showSmallSideBar ? <img style={{fill: (link === pathname) ? '#518F97': 'white'}} src={icon} alt="bar-icon" /> : pageTitle}  
             </PageTitle>
-          ) : (
-            <PageTitle>
-              {showSmallSideBar ? <img src={icon} alt="bar-icon" /> : pageTitle}
-            </PageTitle>
-          )}
-          </Link>
+          </NavLink>
         </div>
       ))}
     </SideBarContainer>
