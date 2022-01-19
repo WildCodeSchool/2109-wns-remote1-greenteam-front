@@ -1,56 +1,25 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+import  { HomeIcon, ClipboardListIcon, LockClosedIcon } from '@heroicons/react/solid';
 import LeftArrow from '../assets/icons/left-arrow.svg';
 import RightArrow from '../assets/icons/right-arrow.svg';
 import HiveLogo from '../assets/icons/hive.svg';
 import CollabeeLogo from '../assets/icons/app-logo.svg';
-import HomeLogo from '../assets/icons/home-logo.svg';
-import ProjectsLogo from '../assets/icons/projects-logo.svg';
-import AdminLogo from '../assets/icons/admin-logo.svg';
 
-const LogoContainer = styled.p`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 70px;
-  height: 41px;
-`;
 
-const navLinks = [
-  { pageTitle: 'Home', link: '/', icon: HomeLogo },
-  { pageTitle: 'Projects', link: '/projects', icon: ProjectsLogo },
-  { pageTitle: 'Admin', link: '/admin', icon: AdminLogo },
-];
-
-const LeftArrowContainer = styled('div')<{showSmallSideBar: boolean}>`
-    display: flex;
-    justify-content: ${props => props.showSmallSideBar ? 'center' : 'end'};
-    padding: ${props => props.showSmallSideBar ? '10px 0 0 0' : '10px 10px 0 0'};
-    cursor: pointer;
-    margin-bottom: 24px;
-  `;
-
-  const SideBarContainer = styled('div')<{showSmallSideBar: boolean}>`
-    width: ${props => props.showSmallSideBar ? '50px' : '160px'};
-    background-color: #518f97;
-    height: 100vh;
-  `;
-
-  const PageTitle = styled('div')<{active: boolean}>`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    height: 33px;
-    margin-bottom: 25px;
-    background-color: ${props => props.active ? 'white': null};
-    color: ${props => props.active ? '#518F97': null};
-    border-radius: ${props => props.active ? '10px 0 0 10px': null};
-  `;
 
 export default function SideBar(): JSX.Element {
+
+
+const navLinks = [
+  { pageTitle: 'Home', link: '/', icon: <HomeIcon className="w-8 h-8" /> },
+  { pageTitle: 'Projects', link: '/projects', icon: <ClipboardListIcon className="w-8 h-8" /> },
+  { pageTitle: 'Admin', link: '/admin', icon: <LockClosedIcon className="w-8 h-8" /> },
+];
+
   const [showSmallSideBar, setShowSmallSideBar] = useState(false);
 
   const {pathname} = useLocation();
@@ -60,26 +29,27 @@ export default function SideBar(): JSX.Element {
   };
 
   return (
-    <SideBarContainer showSmallSideBar={showSmallSideBar} >
-      <LeftArrowContainer showSmallSideBar={showSmallSideBar} onClick={toggleShowSmallSideBar}>
+    <div className={`${showSmallSideBar ? "w-50 transform duration-200" : "w-160 transform duration-400"} h-screen bg-cyan`} >
+      <div className={`${showSmallSideBar ? "justify-center pt-10" : "justify-end pt-10 pr-10"} flex mb-24 cursor-pointer`} onClick={toggleShowSmallSideBar}>
         <img src={showSmallSideBar ? RightArrow : LeftArrow} alt="left-arrow" />
-      </LeftArrowContainer>
-      <LogoContainer>
+      </div>
+      <div className="flex justify-center mb-70 h-41">
         <img
           src={showSmallSideBar ? HiveLogo : CollabeeLogo}
           alt="collabee-logo"
         />
-      </LogoContainer>
+      </div>
 
       {navLinks.map(({ pageTitle, link, icon }) => (
         <div key={link}>
-          <NavLink to={link} style={{textDecoration: 'none'}}>
-            <PageTitle active={link === pathname}>
-              {showSmallSideBar ? <img style={{fill: (link === pathname) ? '#518F97': 'white'}} src={icon} alt="bar-icon" /> : pageTitle}  
-            </PageTitle>
+          <NavLink to={link}>
+            <div className={`${link === pathname && "bg-white text-cyan rounded-l-xsmall"} flex items-center justify-center text-white font-bold cursor-pointer h-33 mb-25`}>
+              {showSmallSideBar ? icon : pageTitle}
+       
+            </div>
           </NavLink>
         </div>
       ))}
-    </SideBarContainer>
+    </div>
   );
 }
