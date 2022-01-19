@@ -17,6 +17,7 @@ module.exports = {
         '400': '400ms'
       },
       borderRadius: {
+        xsmall: '10px',
         small: '15px',
         large: '30px'
       },
@@ -35,16 +36,26 @@ module.exports = {
       },
       width: {
         40: '40rem',
+        50: '50px',
+        160: '160px'
       },
       maxWidth: {
         34: '34rem',
       },
       height: {
+        33: '33px',
         45: '45rem',
+        41: '41px'
       },
       margin: {
         17: '17rem',
+        70: '70px',
+        24: '24px',
+        25: '25px'
       },
+      padding: {
+        10: '10px'
+      }
     },
   },
   variants: {
