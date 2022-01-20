@@ -12,6 +12,8 @@ module.exports = {
         cream: '#fcfcfc',
         cyan: '#518F97',
         orange: '#FFA141',
+        darkOrange: '#FF7F00',
+        darkCyan: '#25737D'
       },
       transitionDuration: {
         '400': '400ms'
@@ -30,11 +32,14 @@ module.exports = {
       },
       fontSize: {
         subtitle: ['24px', '16px'],
+        '3xl': '1.875rem',
+        '4xl': '2.25rem',
       },
       boxShadow: {
         cards: '6px 4px 20px rgba(0, 0, 0, 0.1)',
       },
       width: {
+        36: '36rem',
         40: '40rem',
         50: '50px',
         160: '160px'
