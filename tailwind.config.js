@@ -30,6 +30,8 @@ module.exports = {
       },
       fontSize: {
         subtitle: ['24px', '16px'],
+        titlesize: "64px",
+        textelementsize: "36px"
       },
       boxShadow: {
         cards: '6px 4px 20px rgba(0, 0, 0, 0.1)',
@@ -37,7 +39,11 @@ module.exports = {
       width: {
         40: '40rem',
         50: '50px',
-        160: '160px'
+        160: '160px',
+        homeimgwidth: "353px"
+      },
+      flex: {
+        2: '2 2 0%'
       },
       maxWidth: {
         34: '34rem',
@@ -45,7 +51,8 @@ module.exports = {
       height: {
         33: '33px',
         45: '45rem',
-        41: '41px'
+        41: '41px',
+        homeimgheight: "248.75px"
       },
       margin: {
         17: '17rem',
