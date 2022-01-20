@@ -12,6 +12,8 @@ module.exports = {
         cream: '#fcfcfc',
         cyan: '#518F97',
         orange: '#FFA141',
+        darkOrange: '#FF7F00',
+        darkCyan: '#25737D'
       },
       transitionDuration: {
         '400': '400ms'
@@ -38,6 +40,7 @@ module.exports = {
       },
       width: {
         36: '36rem',
+        40: '40rem',
         50: '50px',
         160: '160px'
       },
