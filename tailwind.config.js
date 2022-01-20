@@ -30,12 +30,14 @@ module.exports = {
       },
       fontSize: {
         subtitle: ['24px', '16px'],
+        '3xl': '1.875rem',
+        '4xl': '2.25rem',
       },
       boxShadow: {
         cards: '6px 4px 20px rgba(0, 0, 0, 0.1)',
       },
       width: {
-        40: '40rem',
+        36: '36rem',
         50: '50px',
         160: '160px'
       },

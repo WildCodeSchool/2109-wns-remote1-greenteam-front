@@ -15,7 +15,7 @@ export default function SideBar(): JSX.Element {
 
 
 const navLinks = [
-  { pageTitle: 'Home', link: '/', icon: <HomeIcon className="w-8 h-8" /> },
+  { pageTitle: 'Home', link: '/homepage', icon: <HomeIcon className="w-8 h-8" /> },
   { pageTitle: 'Projects', link: '/projects', icon: <ClipboardListIcon className="w-8 h-8" /> },
   { pageTitle: 'Admin', link: '/admin', icon: <LockClosedIcon className="w-8 h-8" /> },
 ];
