@@ -12,6 +12,7 @@ module.exports = {
         cream: '#fcfcfc',
         cyan: '#518F97',
         orange: '#FFA141',
+        lightgray: "#E6E6E6"
       },
       transitionDuration: {
         '400': '400ms'
@@ -40,13 +41,20 @@ module.exports = {
         40: '40rem',
         50: '50px',
         160: '160px',
-        homeimgwidth: "353px"
+        homeimgwidth: "353px",
+        fitcontent: "fit-content"
       },
-      flex: {
-        2: '2 2 0%'
+      minWidth: {
+        fitcontent: "fit-content",
       },
       maxWidth: {
-        34: '34rem',
+        fitcontent: "fit-content",
+        34: "34rem"
+      },
+      flex: {
+        2: '2 2 0%',
+        3: '3 3 0%',
+        4: '4 4 0%'
       },
       height: {
         33: '33px',
