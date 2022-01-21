@@ -43,7 +43,7 @@ const navLinks = [
       {navLinks.map(({ pageTitle, link, icon }) => (
         <div key={link}>
           <NavLink to={link}>
-            <div className={`${link === pathname && "bg-white text-cyan rounded-l-xsmall"} flex items-center justify-center text-white font-bold cursor-pointer h-33 mb-25`}>
+            <div className={`${link === pathname && "bg-white text-cyan rounded-l-xsmall"} ${showSmallSideBar ? "w-50 transform duration-200" : "w-160 transform duration-400"} flex items-center justify-center text-white font-bold cursor-pointer h-33 mb-25`}>
               {showSmallSideBar ? icon : pageTitle}
        
             </div>
