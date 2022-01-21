@@ -13,7 +13,8 @@ module.exports = {
         cyan: '#518F97',
         orange: '#FFA141',
         darkOrange: '#FF7F00',
-        darkCyan: '#25737D'
+        darkCyan: '#25737D',
+        lightgray: "#E6E6E6"
       },
       transitionDuration: {
         '400': '400ms'
@@ -34,6 +35,8 @@ module.exports = {
         subtitle: ['24px', '16px'],
         '3xl': '1.875rem',
         '4xl': '2.25rem',
+        titlesize: "64px",
+        textelementsize: "36px"
       },
       boxShadow: {
         cards: '6px 4px 20px rgba(0, 0, 0, 0.1)',
@@ -42,15 +45,27 @@ module.exports = {
         36: '36rem',
         40: '40rem',
         50: '50px',
-        160: '160px'
+        160: '160px',
+        homeimgwidth: "353px",
+        fitcontent: "fit-content"
+      },
+      minWidth: {
+        fitcontent: "fit-content",
       },
       maxWidth: {
-        34: '34rem',
+        fitcontent: "fit-content",
+        34: "34rem"
+      },
+      flex: {
+        2: '2 2 0%',
+        3: '3 3 0%',
+        4: '4 4 0%'
       },
       height: {
         33: '33px',
         45: '45rem',
-        41: '41px'
+        41: '41px',
+        homeimgheight: "248.75px"
       },
       margin: {
         17: '17rem',
