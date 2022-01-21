@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import SideBar from './components/SideBar';
 import HomePage from './Pages/HomePage/HomePage';
 import ProjectList from './Pages/ProjectList';
@@ -8,13 +9,18 @@ import Admin from './Pages/Admin';
 import LandingPage from './Pages/LandingPage';
 import ProjectDetails from './Pages/ProjectDetails/ProjectDetails';
 
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache()
+});
 
 function App(): JSX.Element {
 
   const location = window.location.pathname
 
   return (
-    <div className="App">
+    <ApolloProvider client={client}>
+      <div className="App">
       <Router>
         <div className="flex">
         {location !== '/' && <SideBar />}
@@ -30,6 +36,8 @@ function App(): JSX.Element {
         </div>
       </Router>
     </div>
+    </ApolloProvider>
+    
   );
 }
 
