@@ -25,8 +25,15 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/import-types-preset": "^2.1.12",
+    "@graphql-codegen/introspection": "^2.1.1",
+    "@graphql-codegen/typescript": "^2.4.5",
+    "@graphql-codegen/typescript-operations": "^2.3.2",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.8",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
+    "apollo": "^2.33.9",
     "autoprefixer": "^9",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^14.0.0",
@@ -46,6 +53,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
+    "generate-gql-types": "apollo client:codegen --watch --includes='src/**/*.tsx' --endpoint=http://localhost:5000 --target typescript --outputFlat src/schemaTypes.ts",
     "lint": "eslint --ext .ts,.tsx --fix src/",
     "prettify": "prettier --write src/",
     "fmt-lint": "yarn run prettify && yarn run lint"

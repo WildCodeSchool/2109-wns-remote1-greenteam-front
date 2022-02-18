@@ -10,9 +10,23 @@ import LandingPage from './Pages/LandingPage';
 import ProjectDetails from './Pages/ProjectDetails/ProjectDetails';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: process.env.REACT_APP_BACKEND_URL,
   cache: new InMemoryCache()
 });
+
+// const GET_ALL_CURRENT_PROJECTS = gql`
+//   query GetAllCurrentProjects {
+//     project {
+//       id
+//       title
+//       description
+//       picture
+//       start_date
+//       end_date
+//       tickets
+//     }
+//   }
+// `;
 
 function App(): JSX.Element {
 
