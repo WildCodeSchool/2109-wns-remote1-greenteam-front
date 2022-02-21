@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import  { HomeIcon, ClipboardListIcon, LockClosedIcon } from '@heroicons/react/solid';
+import { HomeIcon, ClipboardListIcon, LockClosedIcon } from '@heroicons/react/solid';
 import LeftArrow from '../assets/icons/left-arrow.svg';
 import RightArrow from '../assets/icons/right-arrow.svg';
 import HiveLogo from '../assets/icons/hive.svg';
@@ -14,16 +14,17 @@ import CollabeeLogo from '../assets/icons/app-logo.svg';
 export default function SideBar(): JSX.Element {
 
 
-const navLinks = [
-  { pageTitle: 'Home', link: '/homepage', icon: <HomeIcon className="w-8 h-8" /> },
-  { pageTitle: 'Projects', link: '/projects', icon: <ClipboardListIcon className="w-8 h-8" /> },
-  { pageTitle: 'Admin', link: '/admin', icon: <LockClosedIcon className="w-8 h-8" /> },
-];
+  const navLinks = [
+    { pageTitle: 'Home', link: '/homepage', icon: <HomeIcon className="w-8 h-8" /> },
+    { pageTitle: 'Projects', link: '/projects', icon: <ClipboardListIcon className="w-8 h-8" /> },
+    { pageTitle: 'Admin', link: '/admin', icon: <LockClosedIcon className="w-8 h-8" /> },
+    { pageTitle: 'ProjectDetails', link: '/projectdetails', icon: <LockClosedIcon className="w-8 h-8" /> }
+  ];
 
   const [showSmallSideBar, setShowSmallSideBar] = useState(false);
 
-  const {pathname} = useLocation();
-  
+  const { pathname } = useLocation();
+
   const toggleShowSmallSideBar = () => {
     setShowSmallSideBar(!showSmallSideBar);
   };
@@ -45,7 +46,7 @@ const navLinks = [
           <NavLink to={link}>
             <div className={`${link === pathname && "bg-white text-cyan rounded-l-xsmall"} ${showSmallSideBar ? "w-50 transform duration-200" : "w-160 transform duration-400"} flex items-center justify-center text-white font-bold cursor-pointer h-33 mb-25`}>
               {showSmallSideBar ? icon : pageTitle}
-       
+
             </div>
           </NavLink>
         </div>

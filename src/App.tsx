@@ -17,15 +17,16 @@ function App(): JSX.Element {
     <div className="App">
       <Router>
         <div className="flex">
-        {location !== '/' && <SideBar />}
-        
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/homepage" element={<HomePage name="greenteam" />} />
-          <Route path="/projects" element={<ProjectList />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/projectdetails" element={<ProjectDetails />} />
-        </Routes>
+          {location !== '/' && <SideBar />}
+
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/homepage" element={<HomePage name="greenteam" />} />
+            <Route path="/projects" element={<ProjectList />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/projectdetails" element={<ProjectDetails />} />
+            <Route path="/projectlist" element={<ProjectList />} />
+          </Routes>
 
         </div>
       </Router>
