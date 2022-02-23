@@ -1,23 +1,44 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, {FormEvent, ReactEventHandler, useState} from 'react';
+import {useMutation} from "@apollo/client";
+import {LOGIN_QUERY, UserResponse} from "../services/user/queries";
+
 
 export default function SignIn(): JSX.Element {
+
+  const [emailInput, setEmail] = useState<string>("")
+  const [passwordInput, setPassword] = useState<string>("")
+  const [getUser, {loading, data}] =  useMutation<{getUser:UserResponse}>(LOGIN_QUERY)
+
+  const onFinish = async (e: FormEvent) => {
+    e.preventDefault()
+    let user : UserResponse
+    user = await getUser({variables: {email:emailInput, password:passwordInput}})
+
+
+/*
+    if (user.statusCode === 201) {
+
+    }
+    */
+  }
+
   return (
     <div>
       <h2 className="mt-16 mb-16 text-center text-5xl font-extrabold text-orange">
         Sign in
       </h2>
     
-    <form className="mt-8" action="#" method="POST">
+    <form className="mt-8" onSubmit={onFinish}>
       <input type="hidden" name="remember" value="true" />
       <div className="rounded-md shadow-sm space-y-6">
         <div>
           <label htmlFor="email-address" className="sr-only">Email</label>
-          <input id="email-address" name="email" type="email" autoComplete="email" required className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange focus:border-orange focus:z-10 sm:text-sm" placeholder="Email address" />
+          <input id="email-address" value={emailInput} name="email-address" onChange={(e) => setEmail(e.target.value)} type="email" autoComplete="email" required className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange focus:border-orange focus:z-10 sm:text-sm" placeholder="Email address" />
         </div>
         <div>
           <label htmlFor="password" className="sr-only">Password</label>
-          <input id="password" name="password" type="password" autoComplete="current-password" required className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange focus:border-orange focus:z-10 sm:text-sm" placeholder="Password" />
+          <input id="password" value={passwordInput} onChange={(e) => setPassword(e.target.value)} name="password" type="password" autoComplete="current-password" required className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange focus:border-orange focus:z-10 sm:text-sm" placeholder="Password" />
         </div>
       </div>
 

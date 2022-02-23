@@ -8,11 +8,8 @@ import ProjectList from './Pages/ProjectList';
 import Admin from './Pages/Admin';
 import LandingPage from './Pages/LandingPage';
 import ProjectDetails from './Pages/ProjectDetails/ProjectDetails';
+import client from "./services/apollo/index"
 
-const client = new ApolloClient({
-  uri: process.env.REACT_APP_BACKEND_URL,
-  cache: new InMemoryCache()
-});
 
 // const GET_ALL_CURRENT_PROJECTS = gql`
 //   query GetAllCurrentProjects {
