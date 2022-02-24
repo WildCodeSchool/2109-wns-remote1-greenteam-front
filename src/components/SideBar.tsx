@@ -18,7 +18,6 @@ export default function SideBar(): JSX.Element {
     { pageTitle: 'Home', link: '/homepage', icon: <HomeIcon className="w-8 h-8" /> },
     { pageTitle: 'Projects', link: '/projects', icon: <ClipboardListIcon className="w-8 h-8" /> },
     { pageTitle: 'Admin', link: '/admin', icon: <LockClosedIcon className="w-8 h-8" /> },
-    { pageTitle: 'ProjectDetails', link: '/projectdetails', icon: <LockClosedIcon className="w-8 h-8" /> }
   ];
 
   const [showSmallSideBar, setShowSmallSideBar] = useState(false);

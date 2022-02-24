@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import profilpic from '../../assets/icons/profile-pic.svg'
 
 export default function MembersComponent({ members }: any): JSX.Element {

@@ -50,12 +50,6 @@
     "prettify": "prettier --write src/",
     "fmt-lint": "yarn run prettify && yarn run lint"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
