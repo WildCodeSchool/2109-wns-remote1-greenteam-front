@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useLocation, useRoutes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import SideBar from './components/SideBar';
 import HomePage from './Pages/HomePage';
@@ -11,21 +11,20 @@ import ProjectDetails from './Pages/ProjectDetails/ProjectDetails';
 import client from './services/apollo-config';
 
 function App(): JSX.Element {
-  const location = window.location.pathname;
+  const location = useLocation();
+  const Routes = () =>
+    useRoutes([
+      { path: '/', element: <LandingPage /> },
+      { path: '/homepage', element: <HomePage name="greenteam" /> },
+      { path: '/projects', element: <ProjectList /> },
+      { path: '/admin', element: <Admin /> },
+      { path: '/projectdetails', element: <ProjectDetails /> },
+    ]);
 
   return (
     <ApolloProvider client={client}>
-      <Router>
-        {location !== '/' && <SideBar />}
-
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/homepage" element={<HomePage name="greenteam" />} />
-          <Route path="/projects" element={<ProjectList />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/projectdetails" element={<ProjectDetails />} />
-        </Routes>
-      </Router>
+      {location.pathname !== '/' && <SideBar />}
+      <Routes />
     </ApolloProvider>
   );
 }
