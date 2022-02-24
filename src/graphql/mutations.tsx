@@ -8,10 +8,15 @@ export const LOGIN = gql`
       token
     }
   }
-`
+`;
 
 export const REGISTER = gql`
-  mutation Register($firstname: String!, $lastname: String!, $password: String!, $email: String!) {
+  mutation Register(
+    $firstname: String!
+    $lastname: String!
+    $password: String!
+    $email: String!
+  ) {
     register(
       firstname: $firstname
       lastname: $lastname
@@ -23,4 +28,4 @@ export const REGISTER = gql`
       token
     }
   }
-`
+`;
