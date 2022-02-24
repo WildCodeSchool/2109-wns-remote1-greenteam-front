@@ -15,7 +15,7 @@ export default function ProjectList(): JSX.Element {
   useEffect(() => {
 
   }, [])
-  return <div className=' flex flex-col h-full w-full gap-2'>
+  return <div className=' flex flex-col w-screen h-scree gap-2'>
     <div className='flex flex-row w-full h-fit items-center justify-center'>
       <h1 className='lg:text-3xl sm:text-sm md:text-2xl '>Project list</h1>
       <img src={imgprojectlist} className=' w-16 h-16' alt="" />
