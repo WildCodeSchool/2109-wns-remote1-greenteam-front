@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 
-import { calendarIcon, imgprojectlist, searchIcon } from '../../assets'
+import { activeNextPageButton, calendarIcon, imgprojectlist, inactiveNextPageButton, searchIcon } from '../../assets'
 import ProjectBox from './ProjectBox'
 
 
 
 export default function ProjectList(): JSX.Element {
 
+  const arraydata = [{ title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }
+    , { title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }, { title: "project 1", manager: "john doe" }]
 
+
+  useEffect(() => {
+
+  }, [])
   return <div className=' flex flex-col h-full w-full gap-2'>
     <div className='flex flex-row w-full h-fit items-center justify-center'>
       <h1 className='lg:text-3xl sm:text-sm md:text-2xl '>Project list</h1>
@@ -37,27 +43,22 @@ export default function ProjectList(): JSX.Element {
           <div className=' flex flex-row max-w-full'>
             <input type="text" className='rounded-md w-full h-1/2' placeholder='entrer du text' />
             <img className='w-1/3 h-1/4' alt='' src={searchIcon} />
-          </div>
+            +          </div>
         </div>
       </div>
     </div>
 
     <div className='w-full flex flex-row gap-5 p-2 justify-start flex-wrap '>
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
-      <ProjectBox />
+      {arraydata.map((item, index) => <ProjectBox title={item.title} />)}
+
 
     </div>
-    <div>balls </div>
+    <div className='w-full flex flex-row justify-center'>
+      <img src={activeNextPageButton} alt="" />
+      <img src={inactiveNextPageButton} alt="" />
+      <img src={inactiveNextPageButton} alt="" />
+      <img src={inactiveNextPageButton} alt="" />
+    </div>
   </div>
 
 }

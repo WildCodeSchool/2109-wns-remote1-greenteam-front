@@ -3,10 +3,10 @@
 import React from 'react'
 import { calendarIcon, imgprojectlist, searchIcon } from '../../assets'
 
-export default function ProjectBox(): JSX.Element {
+export default function ProjectBox({ title, manager }: any): JSX.Element {
 
     return <div className=" rounded-md flex p-2 lg:text-sm sm:text-xs md:text-sm text-xs  flex-col gap-2 w-80 box-border bg-lightgray">
-        <span className=''>project title</span>
+        <span className=''>project title {title}</span>
         <span className=''>progess</span>
         <span className=''>managed by</span>
         <div className='flex flex-row h-16  justify-around' >
