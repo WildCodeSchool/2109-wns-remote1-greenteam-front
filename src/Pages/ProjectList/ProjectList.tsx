@@ -1,5 +1,5 @@
 import React from 'react'
-import './projectList.css'
+
 
 import { calendarIcon, imgprojectlist, searchIcon } from '../../assets'
 import ProjectBox from './ProjectBox'

@@ -1,4 +1,4 @@
-import './projectList.css'
+
 
 import React from 'react'
 import { calendarIcon, imgprojectlist, searchIcon } from '../../assets'
