@@ -1,8 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../graphql/generated';
 
 export default function SignIn(): JSX.Element {
+  const navigate = useNavigate();
+
   const [emailInput, setEmail] = useState<string>('');
   const [passwordInput, setPassword] = useState<string>('');
   const [login, { loading, data }] = useLoginMutation({
@@ -11,7 +14,10 @@ export default function SignIn(): JSX.Element {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    await login();
+    const signin = await login();
+    if (signin?.data?.login.statusCode === 201) {
+      navigate('/homepage');
+    }
   };
 
   return (
@@ -61,16 +67,9 @@ export default function SignIn(): JSX.Element {
           {loading ? (
             <p className="font-medium">Loading ...</p>
           ) : (
-            data && (
-              <p
-                className={
-                  data.login.statusCode === 201
-                    ? 'text-green font-medium'
-                    : 'text-red font-medium'
-                }
-              >
-                {data.login.message}
-              </p>
+            data &&
+            data.login.statusCode === 400 && (
+              <p className="text-red font-medium">{data.login.message}</p>
             )
           )}
           {/* <a href="/" className="font-medium hover:underline">
