@@ -14,7 +14,9 @@ module.exports = {
         orange: '#FFA141',
         darkOrange: '#FF7F00',
         darkCyan: '#25737D',
-        lightgray: "#E6E6E6"
+        lightgray: "#E6E6E6",
+        red: '#dc2626',
+        green: '#16a34a'
       },
       transitionDuration: {
         '400': '400ms'

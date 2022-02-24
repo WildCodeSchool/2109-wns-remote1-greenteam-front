@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_ONE_USER = gql`
-  query GetOneUser {
+  query GetOneUser($email: String!) {
     getOneUser(email: $email) {
       id
       firstName
@@ -9,7 +9,7 @@ export const GET_ONE_USER = gql`
       email
     }
   }
-`
+`;
 
 export const GET_ALL_PROJECTS = gql`
   query GetAllProjects {
@@ -19,4 +19,4 @@ export const GET_ALL_PROJECTS = gql`
       description
     }
   }
-`
+`;

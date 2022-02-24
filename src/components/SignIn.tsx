@@ -1,22 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { FormEvent, useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { Login, LoginVariables } from '../graphql/__generated__/Login';
-import { LOGIN } from '../graphql/mutations';
+import { useLoginMutation } from '../graphql/generated';
 
 export default function SignIn(): JSX.Element {
   const [emailInput, setEmail] = useState<string>('');
   const [passwordInput, setPassword] = useState<string>('');
-  const [
-    getUser,
-    // { loading, data, error }
-  ] = useMutation<Login, LoginVariables>(LOGIN);
+  const [login, { loading, data }] = useLoginMutation({
+    variables: { email: emailInput, password: passwordInput },
+  });
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    await getUser({
-      variables: { email: emailInput, password: passwordInput },
-    });
+    await login();
   };
 
   return (
@@ -25,7 +20,7 @@ export default function SignIn(): JSX.Element {
         Sign in
       </h2>
 
-      <form className="mt-8" onSubmit={onSubmit}>
+      <form className="mt-8">
         <input type="hidden" name="remember" value="true" />
         <div className="rounded-md shadow-sm space-y-6">
           <div>
@@ -62,15 +57,31 @@ export default function SignIn(): JSX.Element {
           </div>
         </div>
 
-        {/* <div className="text-sm mb-6 m-1.5">
-          <a href="/" className="font-medium hover:underline">
+        <div className="text-sm mb-6 m-1.5">
+          {loading ? (
+            <p className="font-medium">Loading ...</p>
+          ) : (
+            data && (
+              <p
+                className={
+                  data.login.statusCode === 201
+                    ? 'text-green font-medium'
+                    : 'text-red font-medium'
+                }
+              >
+                {data.login.message}
+              </p>
+            )
+          )}
+          {/* <a href="/" className="font-medium hover:underline">
             Forgot your password?
-          </a>
-        </div> */}
+          </a> */}
+        </div>
 
         <div className="space-y-6">
           <button
             type="submit"
+            onClick={onSubmit}
             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-lg font-bold rounded-md text-white bg-orange hover:bg-darkOrange focus:outline-none "
           >
             Log me in !
