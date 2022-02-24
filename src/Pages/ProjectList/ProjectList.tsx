@@ -17,7 +17,7 @@ export default function ProjectList(): JSX.Element {
     <div className='w-full flex flex-row justify-center items-center'>
       <div className="bg-cyan h-16 rounded-md lg:text-sm sm:text-xs md:text-xs text-xs  flex flex-row max-w-full box-border" >
         <div className='flex p-1  flex-col flex-1'>
-          <span>Search66</span>
+          <span>Search</span>
           <div className='flex flex-row max-w-full box-border'>
             <input type="text" className='rounded-md w-full h-1/2 box-border' placeholder='entrer du text' />
             <img className='w-1/3 h-1/4' alt='' src={searchIcon} />
