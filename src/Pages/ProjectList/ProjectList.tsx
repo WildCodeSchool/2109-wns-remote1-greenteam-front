@@ -49,8 +49,8 @@ export default function ProjectList(): JSX.Element {
   const [selected, setSelected] = useState(status[1]);
 
   return (
-    <div className=" flex flex-col w-screen h-screen gap-2">
-      <div className="flex flex-row w-full h-fit items-center justify-center">
+    <div className=" flex flex-col w-screen h-screen gap-10">
+      <div className="flex flex-row w-full h-fit items-center justify-center mt-20">
         <h1 className="lg:text-3xl sm:text-sm md:text-2xl ">Project list</h1>
         <img src={imgprojectlist} className=" w-16 h-16" alt="imgprojectlist" />
       </div>
@@ -58,13 +58,17 @@ export default function ProjectList(): JSX.Element {
         <div className="bg-cyan h-16 rounded-xl lg:text-sm sm:text-xs md:text-xs text-xs px-4 flex justify-center max-w-full box-border">
           <div className="flex flex-col">
             <span>Search</span>
-            <div className="flex flex-row max-w-full box-border">
+            <div className="flex flex-row max-w-full box-border h-9">
               <input
                 type="text"
-                className="rounded-md w-full box-border"
-                placeholder="Enter text"
+                className="rounded-md w-full box-border pl-3"
+                placeholder="Search a project"
               />
-              <img className="w-1/3 h-1/4" alt="searchIcon" src={searchIcon} />
+              <img
+                className="w-8 h-8 mr-10"
+                alt="searchIcon"
+                src={searchIcon}
+              />
             </div>
           </div>
 

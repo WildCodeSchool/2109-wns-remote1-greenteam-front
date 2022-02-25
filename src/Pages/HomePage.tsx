@@ -9,10 +9,12 @@ interface HomePageProps {
 export default function HomePage({ name }: HomePageProps): JSX.Element {
   const contents = [
     {
+      key: 0,
       imgsrc: pic1,
       text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
     },
     {
+      key: 1,
       imgsrc: pic2,
       text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
     },
@@ -28,8 +30,8 @@ export default function HomePage({ name }: HomePageProps): JSX.Element {
 
       <div className="flex h-full w-full justify-center items-center">
         <div className="flex flex-row justify-around items-center">
-          {contents.map(({ imgsrc, text }) => (
-            <div className="w-1/3 flex flex-col items-center">
+          {contents.map(({ imgsrc, text, key }) => (
+            <div key={key} className="w-1/3 flex flex-col items-center">
               <img alt="home-img" src={imgsrc} />
               <p className="text-lg text-center mt-6">{text}</p>
             </div>

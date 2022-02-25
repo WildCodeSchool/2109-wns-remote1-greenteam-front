@@ -1,14 +1,32 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLoginMutation } from '../graphql/generated';
 
 export default function SignIn(): JSX.Element {
+  const navigate = useNavigate();
+
+  const [emailInput, setEmail] = useState<string>('');
+  const [passwordInput, setPassword] = useState<string>('');
+  const [login, { loading, data }] = useLoginMutation({
+    variables: { email: emailInput, password: passwordInput },
+  });
+
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const signin = await login();
+    if (signin?.data?.login.statusCode === 201) {
+      navigate('/homepage');
+    }
+  };
+
   return (
     <div>
       <h2 className="mt-16 mb-16 text-center text-5xl font-extrabold text-orange">
         Sign in
       </h2>
 
-      <form className="mt-8" action="#" method="POST">
+      <form className="mt-8">
         <input type="hidden" name="remember" value="true" />
         <div className="rounded-md shadow-sm space-y-6">
           <div>
@@ -17,7 +35,9 @@ export default function SignIn(): JSX.Element {
             </label>
             <input
               id="email-address"
-              name="email"
+              value={emailInput}
+              name="email-address"
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               autoComplete="email"
               required
@@ -31,6 +51,8 @@ export default function SignIn(): JSX.Element {
             </label>
             <input
               id="password"
+              value={passwordInput}
+              onChange={(e) => setPassword(e.target.value)}
               name="password"
               type="password"
               autoComplete="current-password"
@@ -42,14 +64,23 @@ export default function SignIn(): JSX.Element {
         </div>
 
         <div className="text-sm mb-6 m-1.5">
-          <a href="/" className="font-medium hover:underline">
+          {loading ? (
+            <p className="font-medium">Loading ...</p>
+          ) : (
+            data &&
+            data.login.statusCode === 400 && (
+              <p className="text-red font-medium">{data.login.message}</p>
+            )
+          )}
+          {/* <a href="/" className="font-medium hover:underline">
             Forgot your password?
-          </a>
+          </a> */}
         </div>
 
         <div className="space-y-6">
           <button
             type="submit"
+            onClick={onSubmit}
             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-lg font-bold rounded-md text-white bg-orange hover:bg-darkOrange focus:outline-none "
           >
             Log me in !
