@@ -4,7 +4,7 @@ import MembersComponent from './MembersComponent';
 export default function DetailComponent(): JSX.Element {
     return (
 
-        <div className='h-full text-sm w-11/12 flex flex-col p-6 justify-between border-solid border-2 rounded-xl border-lightgray '>
+        <div className='h-full overflow-y-auto gap-4 text-sm sm:text-sm md:text-xl lg:text-xl w-11/12 flex mr-10 flex-col p-6 justify-between border-solid border-2 rounded-xl border-lightgray '>
             <div><span>project owner :</span> <span>greenteam</span></div>
             <div className=''><span>description :</span>
                 <p className=''>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ante sapien. Aliquam non cursus odio. Morbi finibus, ligula eget mattis mollis, nibh eros efficitur arcu, at mollis ex eros eu quam. Mauris varius nec mauris at accumsan. In iaculis ullamcorper nisl id volutpat. Etiam luctus consequat elit, eget accumsan mi pellentesque quis. Vestibulum mollis maximus tortor, rutrum feugiat nisi tempor nec.
