@@ -1,8 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useRegisterMutation } from '../graphql/generated';
 
 export default function SignUp(): JSX.Element {
+  const navigate = useNavigate();
+
   const [firstnameInput, setFirstname] = useState<string>('');
   const [lastnameInput, setLastname] = useState<string>('');
   const [emailInput, setEmail] = useState<string>('');
@@ -22,7 +25,10 @@ export default function SignUp(): JSX.Element {
     e.preventDefault();
 
     if (passwordInput === confirmPasswordInput) {
-      await register();
+      const signup = await register();
+      if (signup?.data?.register.statusCode === 201) {
+        navigate('/homepage');
+      }
     }
   };
 
