@@ -29,7 +29,7 @@ export default function SideBar(): JSX.Element {
   };
 
   return (
-    <div className={`${showSmallSideBar ? "w-50 transform duration-200" : "w-160 transform duration-400"} h-screen bg-cyan`} >
+    <div className={`${showSmallSideBar ? "w-50 transform duration-200 h-screen" : "w-160 transform duration-400 h-screen"} bg-cyan`} >
       <div className={`${showSmallSideBar ? "justify-center pt-10" : "justify-end pt-10 pr-10"} flex mb-24 cursor-pointer`} onClick={toggleShowSmallSideBar}>
         <img src={showSmallSideBar ? RightArrow : LeftArrow} alt="left-arrow" />
       </div>
