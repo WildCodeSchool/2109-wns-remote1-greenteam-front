@@ -43,7 +43,7 @@ export default function ProjectList(): JSX.Element {
         <div className='flex flex-col'>
           <span>Search</span>
           <div className='flex flex-row max-w-full box-border'>
-            <input type="text" className='rounded-md w-full box-border' placeholder='entrer du text' />
+            <input type="text" className='rounded-md w-full box-border' placeholder='Enter text' />
             <img className='w-1/3 h-1/4' alt='searchIcon' src={searchIcon} />
           </div>
         </div>
