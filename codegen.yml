@@ -1,0 +1,17 @@
+overwrite: true
+schema: ${REACT_APP_BACKEND_URL}
+documents: 'src/**/*.tsx'
+generates:
+  src/graphql/generated.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - typescript-react-apollo
+    config:
+      withHooks: true
+      avoidOptionals:
+        field: true
+        inputValue: false
+        object: true
+        defaultValue: true
+      
