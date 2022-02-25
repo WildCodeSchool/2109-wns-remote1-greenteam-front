@@ -35,7 +35,7 @@ export default function MembersComponent(): JSX.Element {
                 src={profilePic}
                 className="flex w-1/3 h-1/3"
               />
-              <span className="flex-2">{member.name}</span>
+              <span className="flex-1">{member.name}</span>
             </div>
           ))}
         </div>

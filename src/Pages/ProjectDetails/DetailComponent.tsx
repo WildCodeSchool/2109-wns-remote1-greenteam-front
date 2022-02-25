@@ -3,9 +3,9 @@ import MembersComponent from './MembersComponent';
 
 export default function DetailComponent(): JSX.Element {
   return (
-    <div className="h-full overflow-y-auto gap-4 text-sm sm:text-sm md:text-xl lg:text-xl w-11/12 flex mr-10 flex-col p-6 justify-between border-solid border-2 rounded-xl border-lightgray ">
+    <div className="h-full overflow-y-auto gap-4 text-sm sm:text-sm md:text-xs lg:text-sm w-11/12 flex mr-10 flex-col p-6 justify-between border-solid border-2 rounded-xl border-lightgray ">
       <div>
-        <span>project owner :</span> <span>greenteam</span>
+        <span>Project owner :</span> <span>greenteam</span>
       </div>
       <div className="">
         <span>description :</span>

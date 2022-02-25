@@ -8,10 +8,8 @@ import Admin from './Pages/Admin';
 import LandingPage from './Pages/LandingPage';
 import ProjectDetails from './Pages/ProjectDetails/ProjectDetails';
 
-
 function App(): JSX.Element {
-
-  const location = window.location.pathname
+  const location = window.location.pathname;
 
   return (
     <div className="App">
@@ -27,7 +25,6 @@ function App(): JSX.Element {
             <Route path="/projectdetails" element={<ProjectDetails />} />
             <Route path="/projectlist" element={<ProjectList />} />
           </Routes>
-
         </div>
       </Router>
     </div>
