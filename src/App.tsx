@@ -3,30 +3,28 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SideBar from './components/SideBar';
 import HomePage from './Pages/HomePage';
-import ProjectList from './Pages/ProjectList';
+import ProjectList from './Pages/ProjectList/ProjectList';
 import Admin from './Pages/Admin';
 import LandingPage from './Pages/LandingPage';
 import ProjectDetails from './Pages/ProjectDetails/ProjectDetails';
 
-
 function App(): JSX.Element {
-
-  const location = window.location.pathname
+  const location = window.location.pathname;
 
   return (
     <div className="App">
       <Router>
         <div className="flex">
-        {location !== '/' && <SideBar />}
-        
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/homepage" element={<HomePage name="greenteam" />} />
-          <Route path="/projects" element={<ProjectList />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/projectdetails" element={<ProjectDetails />} />
-        </Routes>
+          {location !== '/' && <SideBar />}
 
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/homepage" element={<HomePage name="greenteam" />} />
+            <Route path="/projects" element={<ProjectList />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/projectdetails" element={<ProjectDetails />} />
+            <Route path="/projectlist" element={<ProjectList />} />
+          </Routes>
         </div>
       </Router>
     </div>
