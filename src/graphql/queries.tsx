@@ -33,3 +33,12 @@ export const VERIFY_USER = gql`
     }
   }
 `;
+
+export const LOGOUT = gql`
+    query LogoutUser {
+        logout {
+            statusCode
+            message
+        }
+    }
+`

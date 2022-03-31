@@ -13,7 +13,7 @@ const AuthGuard = ({ children }) => {
       navigate('/');
       return;
     }
-    if (data) {
+    if (!data) {
       return;
     }
 
