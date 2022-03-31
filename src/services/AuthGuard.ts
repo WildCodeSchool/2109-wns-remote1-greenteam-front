@@ -9,16 +9,16 @@ const AuthGuard = ({ children }) => {
   const { loading, error, data } = useQuery(VERIFY_USER);
 
   useEffect(() => {
-    if (!data) return;
-    console.log(data);
-
-    if (data.user) {
-      console.log(data);
-      localStorage.setItem('user', data.user);
-    } else {
+    if (error) {
       navigate('/');
+      return;
     }
-  }, [location.pathname, data]);
+    if (data) {
+      return;
+    }
+
+    localStorage.setItem('user', data.verifyUser);
+  }, [location.pathname, data, error]);
   return children;
 };
 
