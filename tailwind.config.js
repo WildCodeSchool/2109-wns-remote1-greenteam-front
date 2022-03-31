@@ -1,3 +1,5 @@
+const { valueFromAST } = require('graphql');
+const { number } = require('prop-types');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
@@ -16,7 +18,8 @@ module.exports = {
         darkCyan: '#25737D',
         lightgray: "#E6E6E6",
         red: '#dc2626',
-        green: '#16a34a'
+        success: "#9CB686",
+        error: "#FC9783",
       },
       transitionDuration: {
         '400': '400ms'
@@ -91,6 +94,12 @@ module.exports = {
         'checked',
       ],
     },
+    value: '40', 
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    utils: false,
+    logs: false,
+    darkTheme: "white",
+  },
 }

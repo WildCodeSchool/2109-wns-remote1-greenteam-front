@@ -3,12 +3,13 @@ import './App.css';
 import { useLocation, useRoutes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import SideBar from './components/SideBar';
+import client from './services/apollo-config';
 import HomePage from './Pages/HomePage';
 import ProjectList from './Pages/ProjectList/ProjectList';
 import Admin from './Pages/Admin';
 import LandingPage from './Pages/LandingPage';
-import ProjectDetails from './Pages/ProjectDetails/ProjectDetails';
-import client from './services/apollo-config';
+import ProjectDetails from './Pages/ProjectDetails';
+import Backlog from './Pages/Backlog';
 
 function App(): JSX.Element {
   const location = useLocation();
@@ -19,6 +20,7 @@ function App(): JSX.Element {
       { path: '/projects', element: <ProjectList /> },
       { path: '/admin', element: <Admin /> },
       { path: '/projectdetails', element: <ProjectDetails /> },
+      { path: '/backlog', element: <Backlog /> },
     ]);
 
   return (

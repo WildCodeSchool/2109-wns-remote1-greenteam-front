@@ -10,25 +10,11 @@ import {
   searchIcon,
 } from '../../assets';
 import ProjectBox from './ProjectBox';
+import projects from './projects.json';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
-
-const arraydata = [
-  { id: 1, title: 'project 1', manager: 'John Doe' },
-  { id: 2, title: 'project 2', manager: 'John Doe' },
-  { id: 3, title: 'project 3', manager: 'John Doe' },
-  { id: 4, title: 'project 4', manager: 'John Doe' },
-  { id: 5, title: 'project 5', manager: 'John Doe' },
-  { id: 6, title: 'project 6', manager: 'John Doe' },
-  { id: 7, title: 'project 7', manager: 'John Doe' },
-  { id: 8, title: 'project 8', manager: 'John Doe' },
-  { id: 9, title: 'project 9', manager: 'John Doe' },
-  { id: 10, title: 'project 10', manager: 'John Doe' },
-  { id: 11, title: 'project 11', manager: 'John Doe' },
-  { id: 12, title: 'project 12', manager: 'John Doe' },
-];
 
 export default function ProjectList(): JSX.Element {
   const status = [
@@ -154,9 +140,14 @@ export default function ProjectList(): JSX.Element {
       </div>
 
       <div className="w-full flex flex-row gap-5 p-2 justify-center flex-wrap">
-        {arraydata.map((item) => (
-          <div key={item.id}>
-            <ProjectBox title={item.title} manager={item.manager} />
+        {projects.map((project) => (
+          <div key={project.id}>
+            <ProjectBox
+              title={project.title}
+              manager={project.manager}
+              startDate={project.startDate}
+              endDate={project.endDate}
+            />
           </div>
         ))}
       </div>

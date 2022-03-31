@@ -18,9 +18,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+     "typeRoots": [
+      "./react-trello.d.ts"
+    ],
+    "noImplicitAny": false
   },
   "include": [
     "src"
-  ]
+  ],
+  "noImplicitAny": false
 }
