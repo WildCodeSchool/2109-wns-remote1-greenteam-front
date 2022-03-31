@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { useLocation, useRoutes } from 'react-router-dom';
+import { useLocation, useNavigate, useRoutes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import SideBar from './components/SideBar';
 import HomePage from './Pages/HomePage';
@@ -9,16 +9,39 @@ import Admin from './Pages/Admin';
 import LandingPage from './Pages/LandingPage';
 import ProjectDetails from './Pages/ProjectDetails/ProjectDetails';
 import client from './services/apollo-config';
+import AuthGuard from './services/AuthGuard';
 
 function App(): JSX.Element {
   const location = useLocation();
+
   const Routes = () =>
     useRoutes([
       { path: '/', element: <LandingPage /> },
-      { path: '/homepage', element: <HomePage name="greenteam" /> },
-      { path: '/projects', element: <ProjectList /> },
+      {
+        path: '/homepage',
+        element: (
+          <AuthGuard>
+            <HomePage name="greenteam" />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: '/projects',
+        element: (
+          <AuthGuard>
+            <ProjectList />
+          </AuthGuard>
+        ),
+      },
       { path: '/admin', element: <Admin /> },
-      { path: '/projectdetails', element: <ProjectDetails /> },
+      {
+        path: '/projectdetails',
+        element: (
+          <AuthGuard>
+            <ProjectDetails />
+          </AuthGuard>
+        ),
+      },
     ]);
 
   return (
