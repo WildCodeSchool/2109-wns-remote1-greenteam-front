@@ -1,20 +1,15 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable jsx-a11y/role-has-required-aria-props */
-import React, { Fragment, useState } from 'react';
-import { Listbox, Transition } from '@headlessui/react';
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
+import React, { useState } from 'react';
 import {
   activeNextPageButton,
   imgprojectlist,
   inactiveNextPageButton,
-  searchIcon,
 } from '../../assets';
 import ProjectBox from './ProjectBox';
+import Dropdown from '../../components/Dropdown';
 import projects from './projects.json';
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 export default function ProjectList(): JSX.Element {
   const status = [
@@ -32,110 +27,56 @@ export default function ProjectList(): JSX.Element {
     },
   ];
 
-  const [selected, setSelected] = useState(status[1]);
+  const date = [
+    {
+      id: 1,
+      type: 'Least recent',
+    },
+    {
+      id: 2,
+      type: 'Most recent',
+    },
+  ];
+
+  type Item = {
+    id: number;
+    type: string;
+  };
+
+  const [statusArray] = useState<Item[]>(status);
+  const [dateArray] = useState<Item[]>(date);
 
   return (
-    <div className=" flex flex-col w-screen h-screen gap-10">
-      <div className="flex flex-row w-full h-fit items-center justify-center mt-20">
-        <h1 className="lg:text-3xl sm:text-sm md:text-2xl ">Project list</h1>
-        <img src={imgprojectlist} className=" w-16 h-16" alt="imgprojectlist" />
-      </div>
-      <div className="w-full flex flex-row justify-center items-center">
-        <div className="bg-cyan h-16 rounded-xl lg:text-sm sm:text-xs md:text-xs text-xs px-4 flex justify-center max-w-full box-border">
-          <div className="flex flex-col">
-            <span>Search</span>
-            <div className="flex flex-row max-w-full box-border h-9">
+    <div className=" flex flex-col w-screen h-screen gap-5 p-12">
+      <div className="flex flex-row justify-evenly text-sm">
+        <div className="flex flex-row h-fit items-center justify-center">
+          <h1 className="lg:text-3xl sm:text-sm md:text-2xl ">Project list</h1>
+          <img
+            src={imgprojectlist}
+            className=" w-16 h-16"
+            alt="imgprojectlist"
+          />
+        </div>
+        <div className="bg-cyan h-14 object-cover rounded-lg lg:text-sm sm:text-xs md:text-xs text-xs p-0.5 flex justify-around box-border">
+          <div className="flex justify-center mx-3">
+            <div className="mb-3">
+              <label
+                htmlFor="exampleSearch2"
+                className="form-label inline-block text-cream font-bold"
+              >
+                Search
+              </label>
               <input
-                type="text"
-                className="rounded-md w-full box-border pl-3"
-                placeholder="Search a project"
-              />
-              <img
-                className="w-8 h-8 mr-10"
-                alt="searchIcon"
-                src={searchIcon}
+                type="search"
+                className="form-control block w-full p-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-cyan focus:outline-none"
+                id="exampleSearch2"
+                placeholder="Type here"
               />
             </div>
           </div>
 
-          <Listbox value={selected} onChange={setSelected}>
-            {({ open }) => (
-              <div className="flex flex-col">
-                <Listbox.Label className="block text-sm font-medium text-gray-700">
-                  Status
-                </Listbox.Label>
-                <div className="relative">
-                  <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    <span className="flex items-center">
-                      <span className="mr-6 block truncate">
-                        {selected.type}
-                      </span>
-                    </span>
-                    <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                      <SelectorIcon
-                        className="h-5 w-5 text-gray-400"
-                        aria-hidden="true"
-                      />
-                    </span>
-                  </Listbox.Button>
-
-                  <Transition
-                    show={open}
-                    as={Fragment}
-                    leave="transition ease-in duration-100"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                  >
-                    <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-                      {status.map((item) => (
-                        <Listbox.Option
-                          key={item.id}
-                          className={({ active }) =>
-                            classNames(
-                              active
-                                ? 'text-white bg-indigo-600'
-                                : 'text-gray-900',
-                              'cursor-default select-none relative py-2 pl-3 pr-9'
-                            )
-                          }
-                          value={item}
-                        >
-                          {({ selected, active }) => (
-                            <>
-                              <div className="flex items-center">
-                                <span
-                                  className={classNames(
-                                    selected ? 'font-semibold' : 'font-normal',
-                                    'ml-3 block truncate'
-                                  )}
-                                >
-                                  {item.type}
-                                </span>
-                              </div>
-
-                              {selected ? (
-                                <span
-                                  className={classNames(
-                                    active ? 'text-white' : 'text-indigo-600',
-                                    'absolute inset-y-0 right-0 flex items-center pr-4'
-                                  )}
-                                >
-                                  <CheckIcon
-                                    className="h-5 w-5"
-                                    aria-hidden="true"
-                                  />
-                                </span>
-                              ) : null}
-                            </>
-                          )}
-                        </Listbox.Option>
-                      ))}
-                    </Listbox.Options>
-                  </Transition>
-                </div>
-              </div>
-            )}
-          </Listbox>
+          <Dropdown items={statusArray} />
+          <Dropdown items={dateArray} />
         </div>
       </div>
 

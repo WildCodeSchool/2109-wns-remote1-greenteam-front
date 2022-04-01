@@ -25,35 +25,42 @@ export default function ProjectBox({
     navigate('/backlog');
   };
   return (
-    <div className="shadow-lg rounded-xl flex p-2 lg:text-sm sm:text-xs md:text-sm text-xs flex-col gap-2 w-80 bg-lightgray">
-      <span>Project title : {title}</span>
-      <span>In Progress</span>
-      <span>Managed by : {manager}</span>
-      <div className="flex flex-row h-16  justify-around">
+    <div className="shadow-lg rounded-xl flex p-2 lg:text-sm sm:text-xs md:text-sm text-xs flex-col gap-2 w-18 bg-lightgray">
+      <p>{title}</p>
+      <p className="font-bold">In Progress</p>
+      <div className="flex">
+        <p className="font-bold">Lead:&nbsp;</p>
+        <p>{manager}</p>
+      </div>
+      <div className="flex flex-row h-16 justify-around">
         <div className="flex flex-col justify-between">
           <div className=" flex flex-row gap-2">
-            <img src={calendarIcon} alt="calendarIcon" className="flex-1" />
-            <span className="flex-2 whitespace-nowrap">Start Date</span>
-            <span className="flex-2 whitespace-nowrap">{startDate}</span>
+            <img src={calendarIcon} alt="calendarIcon" />
+            <div className="flex flex-col">
+              <p className="whitespace-nowrap font-bold">Start Date</p>
+              <p className="whitespace-nowrap">{startDate}</p>
+            </div>
           </div>
           <button
             type="button"
             onClick={goToProjectDetails}
-            className="bg-cyan rounded-md w-28 text-white"
+            className="bg-cyan rounded-md w-28 text-white font-bold"
           >
             Details
           </button>
         </div>
         <div className="flex flex-col justify-between">
           <div className="flex flex-row gap-2">
-            <img src={calendarIcon} alt="calenderIcon" className="flex-1" />
-            <span className="flex-2 whitespace-nowrap">End Date</span>
-            <span className="flex-2 whitespace-nowrap">{endDate}</span>
+            <img src={calendarIcon} alt="calenderIcon" />
+            <div className="flex flex-col">
+              <p className="whitespace-nowrap font-bold">End Date</p>
+              <p className="whitespace-nowrap">{endDate}</p>
+            </div>
           </div>
           <button
             type="button"
             onClick={goToBacklog}
-            className="bg-cyan rounded-md w-28 text-white"
+            className="bg-cyan rounded-md w-28 text-white font-bold"
           >
             Backlog
           </button>

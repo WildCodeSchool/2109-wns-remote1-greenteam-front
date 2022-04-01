@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Board from 'react-trello';
+import Board from 'react-trello';
 
 const data = {
   lanes: [

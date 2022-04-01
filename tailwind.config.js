@@ -1,5 +1,6 @@
 const { valueFromAST } = require('graphql');
 const { number } = require('prop-types');
+const { text } = require('stream/consumers');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
@@ -41,7 +42,7 @@ module.exports = {
         '3xl': '1.875rem',
         '4xl': '2.25rem',
         titlesize: "64px",
-        textelementsize: "36px"
+        textelementsize: "36px",
       },
       boxShadow: {
         cards: '6px 4px 20px rgba(0, 0, 0, 0.1)',
@@ -51,6 +52,7 @@ module.exports = {
         40: '40rem',
         50: '50px',
         160: '160px',
+        18: '18rem',
         homeimgwidth: "353px",
         fitcontent: "fit-content"
       },
