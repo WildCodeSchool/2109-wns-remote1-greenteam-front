@@ -19,6 +19,11 @@ export default function SignUp(): JSX.Element {
       email: emailInput,
       password: passwordInput,
     },
+    context: {
+      headers: {
+        'api-authorization': process.env.REACT_BACKEND_API_AUTHORIZATION_TOKEN,
+      },
+    },
   });
 
   const onSubmit = async (e: FormEvent) => {

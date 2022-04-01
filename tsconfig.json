@@ -10,6 +10,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
@@ -22,7 +23,6 @@
      "typeRoots": [
       "./react-trello.d.ts"
     ],
-    "noImplicitAny": false
   },
   "include": [
     "src"

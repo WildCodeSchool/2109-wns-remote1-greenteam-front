@@ -15,6 +15,7 @@ export default function SignIn(): JSX.Element {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const signin = await login();
+    console.log(signin);
     if (signin?.data?.login.statusCode === 201) {
       navigate('/homepage');
     }
@@ -68,7 +69,7 @@ export default function SignIn(): JSX.Element {
             <p className="font-medium">Loading ...</p>
           ) : (
             data &&
-            data.login.statusCode === 400 && (
+            data.login.statusCode === (400 || 500) && (
               <p className="text-red font-medium">{data.login.message}</p>
             )
           )}

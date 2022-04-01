@@ -20,3 +20,25 @@ export const GET_ALL_PROJECTS = gql`
     }
   }
 `;
+
+export const VERIFY_USER = gql`
+  query VerifyUser {
+    verifyUser {
+      id
+      email
+      lastName
+      firstName
+      age
+      # notifications
+    }
+  }
+`;
+
+export const LOGOUT = gql`
+  query LogoutUser {
+    logout {
+      statusCode
+      message
+    }
+  }
+`;
