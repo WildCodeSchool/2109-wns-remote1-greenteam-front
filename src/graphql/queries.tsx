@@ -28,8 +28,6 @@ export const VERIFY_USER = gql`
       email
       lastName
       firstName
-      age
-      # notifications
     }
   }
 `;

@@ -15,7 +15,6 @@ export default function SignIn(): JSX.Element {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const signin = await login();
-    console.log(signin);
     if (signin?.data?.login.statusCode === 201) {
       navigate('/homepage');
     }

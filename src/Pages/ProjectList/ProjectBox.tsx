@@ -44,7 +44,7 @@ export default function ProjectBox({
           <button
             type="button"
             onClick={goToProjectDetails}
-            className="bg-cyan rounded-md w-28 text-white font-bold"
+            className="bg-cyan hover:bg-orange rounded-md w-28 text-white font-bold"
           >
             Details
           </button>
@@ -60,7 +60,7 @@ export default function ProjectBox({
           <button
             type="button"
             onClick={goToBacklog}
-            className="bg-cyan rounded-md w-28 text-white font-bold"
+            className="bg-cyan hover:bg-orange rounded-md w-28 text-white font-bold"
           >
             Backlog
           </button>

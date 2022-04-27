@@ -3,6 +3,7 @@ import './App.css';
 import { useLocation, useRoutes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import SideBar from './components/SideBar';
+import SideButtons from './components/SideButtons';
 import client from './services/apollo-config';
 import HomePage from './Pages/HomePage';
 import ProjectList from './Pages/ProjectList/ProjectList';
@@ -26,37 +27,57 @@ function App(): JSX.Element {
           </AuthGuard>
         ),
       },
+      // {
+      //   path: '/projects',
+      //   element: (
+      //     <AuthGuard>
+      //       <ProjectList />
+      //     </AuthGuard>
+      //   ),
+      // },
+      // {
+      //   path: '/admin',
+      //   element: (
+      //     <AuthGuard>
+      //       <Admin />
+      //     </AuthGuard>
+      //   ),
+      // },
+      // {
+      //   path: '/projectdetails',
+      //   element: (
+      //     <AuthGuard>
+      //       <ProjectDetails />
+      //     </AuthGuard>
+      //   ),
+      // },
+      // {
+      //   path: '/backlog',
+      //   element: (
+      //     <AuthGuard>
+      //       <Backlog />
+      //     </AuthGuard>
+      //   ),
+      // },
+      // {
+      //   path: '/homepage',
+      //   element: <HomePage name="greenteam" />,
+      // },
       {
         path: '/projects',
-        element: (
-          <AuthGuard>
-            <ProjectList />
-          </AuthGuard>
-        ),
+        element: <ProjectList />,
       },
       {
         path: '/admin',
-        element: (
-          <AuthGuard>
-            <Admin />
-          </AuthGuard>
-        ),
+        element: <Admin />,
       },
       {
         path: '/projectdetails',
-        element: (
-          <AuthGuard>
-            <ProjectDetails />
-          </AuthGuard>
-        ),
+        element: <ProjectDetails />,
       },
       {
         path: '/backlog',
-        element: (
-          <AuthGuard>
-            <Backlog />
-          </AuthGuard>
-        ),
+        element: <Backlog />,
       },
     ]);
 
@@ -65,6 +86,7 @@ function App(): JSX.Element {
       <div className="flex">
         {location.pathname !== '/' && <SideBar />}
         <Routes />
+        {location.pathname !== '/' && <SideButtons />}
       </div>
     </ApolloProvider>
   );

@@ -1,12 +1,18 @@
-import { Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
-import React, { FC, useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { VERIFY_USER } from '../graphql/queries';
 
-const AuthGuard = ({ children }) => {
+export default function AuthGuard({
+  children,
+}: {
+  children: any;
+}): JSX.Element {
   const location = useLocation();
   const navigate = useNavigate();
-  const { loading, error, data } = useQuery(VERIFY_USER);
+  const { error, data } = useQuery(VERIFY_USER);
 
   useEffect(() => {
     if (error) {
@@ -20,6 +26,4 @@ const AuthGuard = ({ children }) => {
     localStorage.setItem('user', data.verifyUser);
   }, [location.pathname, data, error]);
   return children;
-};
-
-export default AuthGuard;
+}
